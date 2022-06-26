@@ -3,6 +3,8 @@ require 'minitest/pride'
 require '../lib/joke'
 require '../lib/user'
 require 'pry'
+require 'simplecov'
+SimpleCov.start
 
 class UserTest < Minitest::Test
 
