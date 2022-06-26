@@ -21,16 +21,16 @@ In this repository we have an existing Joke class. We're going to add to that cl
 > require './lib/joke'
 # => true
 
-> joke = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
+> joke = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
 # => #<Joke:0x007fc87b02c2e0 ...>
 
 > joke.id
 # => 1
 
-> joke.question
+> joke.setup
 # => "Why did the strawberry cross the road?"
 
-> joke.answer
+> joke.punchline
 # => "Because his mother was in a jam."
 ```
 
@@ -44,7 +44,7 @@ Add to the existing User class so that it can support the following interaction 
 > require './lib/joke'
 # => true
 
-> joke = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
+> joke = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
 # => #<Joke:0x007fc87b02c2e0 ...>
 
 > require './lib/user'
@@ -69,7 +69,7 @@ Continue adding to the User class to support the following interaction pattern.
 > require './lib/joke'
 # => true
 
-> joke = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
+> joke = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
 # => #<Joke:0x007fc87b02c2e0 ...>
 
 > require './lib/user'
@@ -97,10 +97,10 @@ Continue adding to the User class to support the following interaction pattern.
 > require './lib/joke'
 # => true
 
-> joke_1 = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
+> joke_1 = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
 # => #<Joke:0x007fc87b02c2e0 ...>
 
-> joke_2 = Joke.new({id: 2, question: "How do you keep a lion from charging?", answer: "Take away its credit cards."})
+> joke_2 = Joke.new({id: 2, setup: "How do you keep a lion from charging?", punchline: "Take away its credit cards."})
 # => #<Joke:0x007fc87b135240 ...>
 
 > require './lib/user'
