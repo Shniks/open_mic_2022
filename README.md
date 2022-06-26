@@ -1,160 +1,139 @@
 # OpenMic
 
-### Setup
+## Preparation
 
-* Fork this Repository
-* Clone YOUR fork
-* Compete the activity below
-* Push your solution to your fork
-* Submit a pull request from your repository to the turingschool-examples repository
-  * Make sure to put your name in your PR!
+1. Fork this repository.
+1. Clone your new repository to your local machine.
+1. Run `bundle` from the command line.
+1. Run `rake` from the command line.
 
-### Iteration 1
+## Tasks
 
-Use TDD to create a Joke class that responds to the following interaction pattern:
+Add code to the Joke and User classes to support the interaction patterns described below.
+
+Use tests to drive your development.
+
+### Iteration 1: Creating Jokes
+
+In this repository we have an existing Joke class. We're going to add to that class so that it can hold basic information about a joke. Add to the existing Joke class so that it supports the following interaction pattern:
 
 ```ruby
-pry(main)> require './lib/joke'
+> require './lib/joke'
 # => true
 
-pry(main)> joke = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")    
-# => #<Joke:0x00007f84602e4190...>
+> joke = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
+# => #<Joke:0x007fc87b02c2e0 ...>
 
-pry(main)> joke.id
+> joke.id
 # => 1
 
-pry(main)> joke.setup
+> joke.setup
 # => "Why did the strawberry cross the road?"
 
-pry(main)> joke.punchline
+> joke.punchline
 # => "Because his mother was in a jam."
 ```
 
-### Iteration 2
+### Iteration 2: Add Jokes to Users
 
-Use TDD to create a User class that responds to the following interaction pattern:
+Currently we have a User class with a `name` attribute.
+
+Add to the existing User class so that it can support the following interaction pattern.
 
 ```ruby
-pry(main)> require './lib/joke'
+> require './lib/joke'
 # => true
 
-pry(main)> require './lib/user'
+> joke = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
+# => #<Joke:0x007fc87b02c2e0 ...>
+
+> require './lib/user'
 # => true
 
-pry(main)> sal = User.new("Sal")
-# => #<User:0x00007fb71e1eb8d8...>
+> sal = User.new("Sal")
+# => #<User:0x007fc87c8f8aa8 ...>
 
-pry(main)> sal.name
-# => "Sal"
-
-pry(main)> sal.jokes
+> sal.jokes
 # => []
 
-pry(main)> joke_1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")    
-# => #<Joke:0x00007fb71da169f0...>
-
-pry(main)> joke_2 = Joke.new(2, "How do you keep a lion from charging?", "Take away its credit cards.")    
-# => #<Joke:0x00007fb71d8e0bd0...>
-
-pry(main)> sal.learn(joke_1)
-
-pry(main)> sal.learn(joke_2)
-
-pry(main)> sal.jokes
-# => [#<Joke:0x00007fb71da169f0...>, #<Joke:0x00007fb71d8e0bd0...>]
+> sal.learn(joke)
+> sal.jokes
+# => [#<Joke:0x007fc87b02c2e0 ...>]
 ```
 
-### Iteration 3
+### Iteration 3: Allow Users to Tell Jokes
 
-Use TDD to update your User class so that it responds to the following interaction pattern:
+Continue adding to the User class to support the following interaction pattern.
 
 ```ruby
-pry(main)> require './lib/joke'
+> require './lib/joke'
 # => true
 
-pry(main)> require './lib/user'
+> joke = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
+# => #<Joke:0x007fc87b02c2e0 ...>
+
+> require './lib/user'
 # => true
 
-pry(main)> sal = User.new("Sal")
-# => #<User:0x00007fb71e1eb8d8...>
+> sal = User.new("Sal")
+# => #<User:0x007fc87c8f8aa8 ...>
 
-pry(main)> ali = User.new("Ali")
-# => #<User:0x00007fb71e1a4348...>
+> ali = User.new("Ali")
+# => #<User:0x007fc87cabfbe8 ...>
 
-pry(main)> joke_1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")    
-# => #<Joke:0x00007fb71da169f0...>
+> sal.tell(ali, joke)
+> ali.jokes
+# => [#<Joke:0x007fc87b02c2e0 ...>]
 
-pry(main)> joke_2 = Joke.new(2, "How do you keep a lion from charging?", "Take away its credit cards.")    
-# => #<Joke:0x00007fb71d8e0bd0...>
-
-pry(main)> sal.tell(ali, joke_1)
-
-pry(main)> sal.tell(ali, joke_2)
-
-pry(main)> ali.jokes
-# => [#<Joke:0x00007fb71da169f0...>, #<Joke:0x00007fb71d8e0bd0...>]
-
-pry(main)> ali.joke_by_id(1)
-# => #<Joke:0x00007fb71da169f0...>
-
-pry(main)> ali.joke_by_id(2)
-# => #<Joke:0x00007fb71d8e0bd0...>
+> ali.jokes.count
+# => 1
 ```
 
-### Iteration 4
+### Iteration 4: Allow Users to Perform Routines
 
-Use TDD to create an OpenMic class that responds to the following interaction pattern:
+Continue adding to the User class to support the following interaction pattern.
 
 ```ruby
-pry(main)> require './lib/open_mic'
+> require './lib/joke'
 # => true
 
-pry(main)> require './lib/user'
+> joke_1 = Joke.new({id: 1, setup: "Why did the strawberry cross the road?", punchline: "Because his mother was in a jam."})
+# => #<Joke:0x007fc87b02c2e0 ...>
+
+> joke_2 = Joke.new({id: 2, setup: "How do you keep a lion from charging?", punchline: "Take away its credit cards."})
+# => #<Joke:0x007fc87b135240 ...>
+
+> require './lib/user'
 # => true
 
-pry(main)> require './lib/joke'
+> ilana = User.new("Ilana")
+# => #<User:0x007fc87c8f8aa8 ...>
+
+> josh = User.new("Josh")
+# => #<User:0x007fc87cabfbe8 ...>
+
+> ilana.learn(joke_1)
+> ilana.learn(joke_2)
+> ilana.perform_routine_for(josh)
+> josh.jokes
+# => [#<Joke:0x007fc87b02c2e0 ...>, #<Joke:0x007fc87b135240 ...>]
+
+> josh.jokes.count
+# => 2
+```
+
+### Iteration 5: Allow Users to Learn Routines
+
+Continue adding to the User class to support the following interaction pattern.
+
+```ruby
+> require './lib/user'
 # => true
 
-pry(main)> open_mic = OpenMic.new({location: "Comedy Works", date: "11-20-18"})    
-# => #<OpenMic:0x00007fe8fd9f5e00...>
+> casey = User.new("Casey")
+# => #<User:0x007fc87c8f8aa8 ...>
 
-pry(main)> open_mic.location
-# => "Comedy Works"
-
-pry(main)> open_mic.date
-# => "11-20-18"
-
-pry(main)> open_mic.performers
-# => []
-
-pry(main)> sal = User.new("Sal")
-# => #<User:0x00007fe8fda12a00...>
-
-pry(main)> ali = User.new("Ali")
-# => #<User:0x00007fe8ff0dddc0...>
-
-pry(main)> open_mic.welcome(sal)
-
-pry(main)> open_mic.welcome(ali)
-
-pry(main)> open_mic.performers
-# => [#<User:0x00007fe8fda12a00...>, #<User:0x00007fe8ff0dddc0...>]
-
-pry(main)> joke_1 = Joke.new(1, "Why did the strawberry cross the road?", "Because his mother was in a jam.")    
-# => #<Joke:0x00007fe8fd892978...>
-
-pry(main)> joke_2 = Joke.new(2, "How do you keep a lion from charging?", "Take away its credit cards.")    
-# => #<Joke:0x00007fe8fe19f250...>
-
-pry(main)> ali.learn(joke_1)  
-
-pry(main)> ali.learn(joke_2)  
-
-pry(main)> open_mic.repeated_jokes?
-# => false
-
-pry(main)> ali.tell(sal, joke_1)    
-
-pry(main)> open_mic.repeated_jokes?
-# => true
+> casey.learn_routine('./jokes.csv')
+> casey.jokes.count
+# => 100
 ```
