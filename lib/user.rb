@@ -15,4 +15,10 @@ class User
     user.learn(joke)
   end
 
+  def perform_routine_for(user)
+    jokes.map do |joke|
+      tell(user, joke)
+    end
+  end
+
 end
