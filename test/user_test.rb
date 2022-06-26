@@ -46,9 +46,6 @@ class UserTest < Minitest::Test
 
     assert_equal [joke], ali.jokes
     assert_equal 1, ali.jokes.count
-
-
-
   end
 
 
