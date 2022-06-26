@@ -21,4 +21,11 @@ class User
     end
   end
 
+  def learn_routine(filename)
+    File.foreach(filename) do |line|
+      @jokes << line[0..-4]
+    end
+    @jokes.shift
+  end
+
 end
